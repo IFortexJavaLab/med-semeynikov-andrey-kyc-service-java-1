@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: kyc-service
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+    show-sql: true
+
+  cloud:
+    azure:
+      storage:
+        blob:
+          account-name: devstoreaccount1
+          endpoint: http://127.0.0.1:10000/devstoreaccount1
+          account-key: "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
+          container-name: med-container
+
+  datasource:
+    url: jdbc:postgresql://localhost:5434/kyc_service_db
+    username: ifortex
+    password: ifortex
+
+  profiles:
+    active: dev
+
+
+server:
+  port: 8082
+
+app:
+  jwtSecret: 5d9790e5409c4ba5b52d988110ba3e63b02d60525917825c99fba26506c66c18625f6c1ad2dde820a6591851e8947e03ace8b83f6ce4e8b31248cd1d53733e6aa50b6a540f9c09a239ae1476bd04ce37126f04fe2e3b6d223e9231f6b938a6f514f2166a8e82e168062a6ed0481d292139b3a081874fe5074e9f4e8e8bce40ac
