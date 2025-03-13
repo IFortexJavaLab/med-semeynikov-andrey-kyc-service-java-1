@@ -13,6 +13,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ApplicationMapper {
 
+    @Mapping(target = "documents", source = "documents")
     ApplicationListDto applicationToApplicationListDto(Application application);
 
     List<ApplicationListDto> applicationsToApplicationListDtos(List<Application> applications);

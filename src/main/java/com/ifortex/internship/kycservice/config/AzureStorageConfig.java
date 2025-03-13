@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AzureStorageConfig {
 
+    private static final String CONNECTION_STRING = "DefaultEndpointsProtocol=http;AccountName=%s;AccountKey=%s;BlobEndpoint=%s;";
     @Value("${spring.cloud.azure.storage.blob.account-name}")
     private String accountName;
 
@@ -20,8 +21,7 @@ public class AzureStorageConfig {
 
     @Bean
     public BlobServiceClient blobServiceClient() {
-        String connectionString = String.format("DefaultEndpointsProtocol=http;AccountName=%s;AccountKey=%s;BlobEndpoint=%s;",
-            accountName, accountKey, endpoint);
+        String connectionString = String.format(CONNECTION_STRING, accountName, accountKey, endpoint);
         return new BlobServiceClientBuilder()
             .connectionString(connectionString)
             .buildClient();

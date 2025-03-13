@@ -21,5 +21,5 @@ public class ApplicationDto {
     Instant reviewedAt;
     UUID reviewerId;
     String rejectionReason;
-    private List<DocumentDto> documents;
+    List<DocumentDto> documents;
 }

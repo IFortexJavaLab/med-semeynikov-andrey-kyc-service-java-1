@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
+import java.util.List;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
@@ -16,4 +17,5 @@ public class ApplicationListDto {
     String accountId;
     KycStatus status;
     Instant submittedAt;
+    List<DocumentDto> documents;
 }
