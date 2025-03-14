@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Rejection Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            font-size: 16px;
+        }
+
+        .reason {
+            background-color: #ffeaea;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+    <title>Application Rejection Notification</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Application Rejected</h2>
+    </div>
+
+    <div class="content">
+        <p>Dear applicant,</p>
+
+        <p>Thank you for your interest in becoming a paramedic. We have reviewed your application associated with your email address <strong>{{user_email}}</strong>. Unfortunately, your application has been rejected.</p>
+
+        <div class="reason">
+            <strong>Reason for rejection:</strong>
+            <p>{{reason}}</p>
+        </div>
+
+        <p>If you have further questions, please feel free to contact our support team.</p>
+
+        <div class="footer">
+            <p>Best regards,<br>
+               Medical Service Team</p>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

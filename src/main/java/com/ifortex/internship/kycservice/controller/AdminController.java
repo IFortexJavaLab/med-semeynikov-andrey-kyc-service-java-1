@@ -1,5 +1,6 @@
 package com.ifortex.internship.kycservice.controller;
 
+import com.ifortex.internship.kycservice.dto.request.RejectionReason;
 import com.ifortex.internship.kycservice.dto.response.ApplicationDto;
 import com.ifortex.internship.kycservice.dto.response.ApplicationListDto;
 import com.ifortex.internship.kycservice.dto.response.FileDownloadResponse;
@@ -24,6 +25,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -87,5 +90,27 @@ public class AdminController {
             .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileDownloadResponse.getFileName() + "\"")
             .contentType(MediaType.APPLICATION_OCTET_STREAM)
             .body(resource);
+    }
+
+    @Operation(summary = "Approve a paramedic application",
+        description = "Approves the paramedic application by the provided application ID.")
+    @PostMapping("/applications/{applicationId}/approve")
+    public ResponseEntity<Void> approveApplication(@PathVariable UUID applicationId) {
+        log.info("Request to approve application: {}", applicationId);
+        applicationService.approveApplication(applicationId);
+        log.info("Application: {} was approved", applicationId);
+
+        return ResponseEntity.noContent().build();
+    }
+
+    @Operation(summary = "Reject a paramedic application",
+        description = "Rejects a paramedic application with a specified reason.")
+    @PostMapping("/applications/{applicationId}/reject")
+    public ResponseEntity<Void> rejectApplication(@PathVariable UUID applicationId, @RequestBody RejectionReason reason) {
+        log.info("Request to reject application: {}", applicationId);
+        applicationService.rejectApplication(applicationId, reason);
+        log.info("Application: {} was rejected", applicationId);
+
+        return ResponseEntity.noContent().build();
     }
 }

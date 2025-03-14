@@ -13,6 +13,10 @@ spring:
     show-sql: true
 
   cloud:
+    openfeign:
+      okhttp:
+        enabled: true
+
     azure:
       storage:
         blob:
@@ -20,6 +24,20 @@ spring:
           endpoint: http://127.0.0.1:10000/devstoreaccount1
           account-key: "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw=="
           container-name: med-container
+
+  mail:
+    host: sandbox.smtp.mailtrap.io
+    username: 626f914cfbf279
+    password: 54ce3889756a14
+    port: 2525
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    template:
+      default-topic: kyc-verification-events
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
   datasource:
     url: jdbc:postgresql://localhost:5434/kyc_service_db
